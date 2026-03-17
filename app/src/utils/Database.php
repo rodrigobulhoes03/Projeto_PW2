@@ -18,4 +18,9 @@ class Database
     {
 
     }
+
+    public static function lerDisciplinas()
+    {
+
+    }   
 }
