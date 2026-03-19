@@ -2,17 +2,20 @@
 
 namespace src\utils;
 
+use src\models\Aluno;
+use src\models\Professor;
+use src\models\Disciplina;
+use src\utils\Database;
+
 class Menu
 {
-
     /*
      * Exemplo prático de uma classe para utlidades de menu,
      * alterar conforme necessário
      */
-
+    
     public static function principal(): void
     {
-
         echo "1 - Listar alunos\n";
         echo "2 - Criar aluno\n";
         echo "3 - Listar professores\n";
@@ -22,12 +25,10 @@ class Menu
         echo "7 - Criar disciplina\n";
         echo "8 - Remover disciplina\n";
         echo "9 - Adicionar professor a disciplina\n";
-
         echo "0 - Sair\n";
 
-        $opeção = trim(fgets(STDIN));
-
-        switch ($opeção) {
+        $opecao = trim(fgets(STDIN));
+        switch ($opecao) {
             case '1':
                 // Lógica para listar alunos
                 break;
@@ -62,7 +63,5 @@ class Menu
                 echo "Opção inválida. Tente novamente.\n";
         }
     }
-
     // Adicionar lógica referente ao menu
-
 }

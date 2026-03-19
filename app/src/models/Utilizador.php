@@ -4,8 +4,6 @@ namespace src\models;
 
 use src\interfaces\Autenticavel;
 
-include '../interfaces/Autenticavel.php';
-
 abstract class Utilizador implements Autenticavel
 {
     protected int $id;
@@ -19,7 +17,27 @@ abstract class Utilizador implements Autenticavel
         $this->email = $email;
     }
 
-    public function login() {}
-
-    public function logout() {}
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    public function getNome()
+    {
+        return $this->nome;
+    }
+        
+    public function getEmail()
+    {
+        return $this->email;
+    }
+            
+    public function login() {
+        echo "Utilizador $this -> nome faz Login";
+    }
+            
+    public function logout() {
+        echo "Utilizador $this -> nome faz Logout";
+    }
 }
+            

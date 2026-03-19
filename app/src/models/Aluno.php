@@ -2,24 +2,22 @@
 
 namespace src\models;
 
-include '../models/Utilizador.php';
-
 class Aluno extends Utilizador
 {
     private int $numeroAluno;
-    private string $disciplina;
-    private string $media;
+    private int $disciplinaID;
+    private float $media;
 
-    public function __construct(int $id, string $nome, string $email, int $numeroAluno, string $disciplina, string $media)
+    public function __construct(int $id, string $nome, string $email, int $numeroAluno, int $disciplinaID, float $media)
     {
         parent::__construct($id, $nome, $email);
         $this->numeroAluno = $numeroAluno;
-        $this->disciplina = $disciplina;
+        $this->disciplinaID = $disciplinaID;
         $this->media = $media;
     }
 
-    public function criar(int $id, string $nome, string $email, int $numeroAluno, string $disciplina, string $media)
+    public static function criar(int $id, string $nome, string $email, int $numeroAluno, int $disciplinaID, float $media)
     {
-        return new Aluno($id, $nome, $email, $numeroAluno, $disciplina, $media);
+        return new Aluno($id, $nome, $email, $numeroAluno, $disciplinaID, $media);
     }
 }
