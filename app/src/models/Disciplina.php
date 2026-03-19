@@ -4,20 +4,20 @@ namespace src\models;
 
 class Disciplina
 {
-    private int $id;
-    private string $nome;
-    private int $professorID;
+    protected int $id;
+    protected string $nome;
+    protected Professor $professor;
 
-    public function __construct(int $id, string $nome, int $professorID)
+    public function __construct(int $id, string $nome, Professor $professor)
     {
         $this->id = $id;
         $this->nome = $nome;
-        $this->professorID = $professorID;
+        $this->professor = $professor;
     }
 
-    public static function criar(int $id, string $nome, int $professorID)
+    public static function criar(int $id, string $nome, Professor $professor)
     {
-        return new Disciplina($id, $nome, $professorID);
+        return new Disciplina($id, $nome, $professor);
     }
 
     public function getId(): int
@@ -30,8 +30,10 @@ class Disciplina
         return $this->nome;
     }
 
-    public function getProfessorID(): int
+    public function getProfessor(): Professor
     {
-        return $this->professorID;
+        return $this->professor;
     }
+    
+
 }

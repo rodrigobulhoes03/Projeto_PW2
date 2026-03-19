@@ -1,10 +1,11 @@
 <?php
 
 namespace src\models;
+include_once 'Utilizador.php';
 
 class Professor extends Utilizador
 {
-    private int $numeroProfessor;
+    protected int $numeroProfessor;
 
     public function __construct(int $id, string $nome, string $email, int $numeroProfessor)
     {

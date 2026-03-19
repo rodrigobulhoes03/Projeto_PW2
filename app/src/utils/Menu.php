@@ -30,10 +30,10 @@ class Menu
         $opecao = trim(fgets(STDIN));
         switch ($opecao) {
             case '1':
-                // Lógica para listar alunos
+                self::listarAlunos();
                 break;
             case '2':
-                // Lógica para criar aluno
+                Self::criarAluno();
                 break;
             case '3':
                 // Lógica para listar professores
@@ -63,5 +63,20 @@ class Menu
                 echo "Opção inválida. Tente novamente.\n";
         }
     }
+
     // Adicionar lógica referente ao menu
+
+    public static function listarAlunos(): void
+    {
+        $alunos = Database::lerAlunos();
+
+        if (empty($alunos)) {
+            echo "Nenhum aluno encontrado.\n";
+            return;
+        }
+
+        foreach ($alunos as $a) {
+            echo "{$a->getId()} - {$a->getNome()} - {$a->getEmail()}\n";
+        }
+    }
 }
