@@ -8,83 +8,62 @@ use src\models\Disciplina;
 
 class Database
 {
-    /*
-     * LER ALUNOS
-     */
-    
-    public static function lerAlunos(): array
-    {
-        $ficheiro = "database/alunos.txt";
+   public static function guardarLinha(string $ficherio, string $linha)
+   {
+    file_put_contents("app/database/$ficherio", $linha . PHP_EOL, FILE_APPEND);
+   }
+
+   public static function lerProfessores()
+   {
+     $ficheiro = "database/professores.txt";
 
         if (!file_exists($ficheiro)) {
             return [];
         }
 
-        $linhas = file($ficheiro, FILE_IGNORE_NEW_LINES);
-        $alunos = [];
-
-        foreach ($linhas as $linha) {
-            list($id, $nome, $email, $numero, $disciplina, $media) = explode(';', $linha);
-
-            $alunos[] = Aluno::criar(
-                (int)$id,
-                $nome,
-                $email,
-                (int)$numero,
-                Disciplina::criar((int)$disciplina),
-                (float)$media
-            );
-        }
-
-        return $alunos;
-    }
-
-    public static function lerProfessores(): array
-    {
-        $ficheiro = "database/professores.txt";
-
-        if (!file_exists($ficheiro)) {
-            return [];
-        }
-
-        $linhas = file($ficheiro, FILE_IGNORE_NEW_LINES);
         $professores = [];
 
-        foreach ($linhas as $linha) {
-            list($id, $nome, $email, $numeroProfessor) = explode(';', $linha);
+        $ponteiroFicheiro = fopen($ficheiro, 'r');
 
-            $professores[] = Professor::criar((int)$id, $nome, $email, (int) $numeroProfessor);
+        while ($linha = fgets($ponteiroFicheiro)) {
+            $linha = trim($linha);
+
+            if ($linha == '') continue;
+
+            list($id, $nome, $email, $numeroProfessor) = explode(';', $linha);
+            $professor[] = Professor::criar($id, $nome, $email, (int)$numeroProfessor);
+            
         }
+
+        fclose($ponteiroFicheiro);
 
         return $professores;
-    }
+   }
 
-    public static function lerDisciplinas(): array
+    public static function guardarProfessor(Professor $professor): void
     {
-        $ficheiro = "database/disciplinas.txt";
+        $linha = $professor->getId() . '|' . $professor->getNome() . '|' . $professor->getEmail() . '|'. $professor->getNumeroProfessor();
 
-        if (!file_exists($ficheiro)) {
-            return [];
-        }
-
-        $linhas = file($ficheiro);
-        $disciplinas = [];
-
-        foreach ($linhas as $linha) {
-            list($id, $nome, $professorId) = explode(';', $linha);
-
-            $disciplinas[] = Disciplina::criar(
-                (int)$id,
-                $nome,
-                (int)$professor
-            );
-        }
-
-        return $disciplinas;
+        self::guardarLinha("professores.txt", $linha);
     }
 
-    public static function guardarLinha(string $ficheiro, string $linha): void
+    public static function removerProfessor()
     {
-        file_put_contents("database/" . $ficheiro, $linha . PHP_EOL, FILE_APPEND);
+
     }
+
+    public static function lerAlunos()
+    {
+       return [];      
+    }
+
+    public static function lerDisciplinas()
+    {
+       return [];
+    }
+
+
 }
+    
+
+

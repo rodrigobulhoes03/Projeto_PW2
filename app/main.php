@@ -13,7 +13,6 @@ function main() {
     include 'src/models/Utilizador.php';
 
     // Criar um aluno
-
 }
 
 // Chama a função main

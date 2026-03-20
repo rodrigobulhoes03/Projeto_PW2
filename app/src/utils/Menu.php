@@ -16,11 +16,11 @@ class Menu
     
     public static function principal(): void
     {
+        echo "4 - Criar professor\n";
+        echo "3 - Listar professores\n";
+        echo "5 - Remover professor\n";
         echo "1 - Listar alunos\n";
         echo "2 - Criar aluno\n";
-        echo "3 - Listar professores\n";
-        echo "4 - Criar professor\n";
-        echo "5 - Remover professor\n";
         echo "6 - Listar disciplinas\n";
         echo "7 - Criar disciplina\n";
         echo "8 - Remover disciplina\n";
@@ -30,10 +30,10 @@ class Menu
         $opecao = trim(fgets(STDIN));
         switch ($opecao) {
             case '1':
-                self::listarAlunos();
+                
                 break;
             case '2':
-                Self::criarAluno();
+                
                 break;
             case '3':
                 // Lógica para listar professores
