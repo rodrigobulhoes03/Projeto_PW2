@@ -17,17 +17,17 @@ abstract class Utilizador implements Autenticavel
         $this->email = $email;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
     
-    public function getNome()
+    public function getNome(): string
     {
         return $this->nome;
     }
         
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }

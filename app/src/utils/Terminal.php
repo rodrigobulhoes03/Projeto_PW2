@@ -26,5 +26,4 @@ class Terminal
     }
 
     // Adicionar lógica necessária para funções de terminal
-    
 }

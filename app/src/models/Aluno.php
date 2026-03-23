@@ -16,7 +16,7 @@ class Aluno extends Utilizador
         parent::__construct($id, $nome, $email);
         $this->numeroAluno = $numeroAluno;
         $this->disciplina = $disciplina;
-        $this->media = $media;
+        $this->media = max(0, min(20, $media));
     }
 
     public static function criar(int $id, string $nome, string $email, int $numeroAluno, Disciplina $disciplina, float $media)
@@ -24,17 +24,17 @@ class Aluno extends Utilizador
         return new Aluno($id, $nome, $email, $numeroAluno, $disciplina, $media);
     }    
 
-    public function getNumeroAluno()
+    public function getNumeroAluno(): int
     {
         return $this->numeroAluno;
     }
  
-    public function getDisciplina()
+    public function getDisciplina(): Disciplina
     {
         return $this->disciplina;
     }
 
-    public function getMedia()
+    public function getMedia(): float
     {
         return $this->media;
     }

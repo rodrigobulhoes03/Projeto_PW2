@@ -1,19 +1,14 @@
 <?php
 
-use src\interfaces\Autenticavel;
+require_once 'src/interfaces/Autenticavel.php';
+require_once 'src/models/Utilizador.php';
+require_once 'src/models/Professor.php';
+require_once 'src/models/Disciplina.php';
+require_once 'src/models/Aluno.php';
+require_once 'src/utils/Terminal.php';
+require_once 'src/utils/Database.php';
+require_once 'src/utils/Menu.php';
 
-function main() {
-    include 'src/models/Aluno.php';
-    include 'src/models/Professor.php';
-    include 'src/models/Disciplina.php';
-    include 'src/interfaces/Autenticavel.php';
-    include 'src/utils/Database.php';
-    include 'src/utils/Menu.php';
-    include 'src/utils/Terminal.php';
-    include 'src/models/Utilizador.php';
+use src\utils\Menu;
 
-    // Criar um aluno
-}
-
-// Chama a função main
-main();
+Menu::principal();
